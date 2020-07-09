@@ -18,7 +18,7 @@
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to ' Home', users_path(current_user.id), class: 'glyphicon glyphicon-home' %>
+              <%= link_to ' Home', user_path(current_user.id), class: 'glyphicon glyphicon-home' %>
             </li>
             <li class="nav-item">
               <%= link_to ' Users', users_path, class: 'glyphicon glyphicon-user' %>
@@ -48,14 +48,20 @@
     </nav>
   </header>
 
-  <% if flash[:notice] %>
-    <p><%= flash[:notice] %></p>
-  <% end %>
+  <div class="body">
+    <div class="container">
+      <p id="notice"><%= flash[:notice] %></p>
+      <%= yield %>
+    </div>
+  </div>
 
-  <%= yield %>
   <footer>
-    <div class="col-xs-3 col-xs-offset-9">
-      <p>CopyRight Infratop.inc</p>
+    <div class="container">
+      <div class="raw">
+        <div class="col-xs-3 col-xs-offset-9">
+          <p>CopyRight Infratop.inc</p>
+        </div>
+      </div>
     </div>
   </footer>
 </body>
